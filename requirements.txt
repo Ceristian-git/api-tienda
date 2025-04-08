@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+motor
+python-dotenv
+pymongo
+python-jose
+python-multipart
+openai
+pydantic>=2.0.0
