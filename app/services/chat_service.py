@@ -1,10 +1,9 @@
 import os
 from openai import OpenAI
 from dotenv import load_dotenv
-from app.database import db
+from app.db.database import db
 
 load_dotenv()
-
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 async def obtener_recomendacion_chatgpt(presupuesto: float, objetivo: str):
@@ -24,9 +23,7 @@ async def obtener_recomendacion_chatgpt(presupuesto: float, objetivo: str):
 
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
-        messages=[
-            {"role": "user", "content": mensaje_usuario}
-        ]
+        messages=[{"role": "user", "content": mensaje_usuario}]
     )
 
     return response.choices[0].message.content
